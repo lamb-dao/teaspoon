@@ -33,27 +33,44 @@ Mito, sqlite, disk managed
 ** Qlot
 
 #+begin_src bash
-curl -L https://qlot.tech/installer | sh
-#add to path
-/home/<user>/.local/share/qlot/bin/qlot
-qlot # to test
+  curl -L https://qlot.tech/installer | sh
+  #add to path in .bashrc
+  export PATH="${PATH}:/home/<user>/.local/share/qlot/bin"
+  source .bashrc
+  qlot # to test path
+
+  #nav to project
+  qlot init
+  qlot add mito
+  qlot install
+
+  qlot exec sbcl # to test startup
+  (quit)
 #+end_src
 
 add to dotfile
 #+begin_src lisp
-  (setq slime-lisp-implementations
-        '((qlot ("qlot" "exec" "sbcl") :coding-system utf-8-unix)
-          (sbcl ("sbcl") :coding-system utf-8-unix)))
+    (setq slime-lisp-implementations
+          '((qlot ("qlot" "exec" "sbcl") :coding-system utf-8-unix)
+            (sbcl ("sbcl") :coding-system utf-8-unix)))
+    ;; defaulting to qlot
+    ;; you can choose with negative prefix: M-- ,'
 #+end_src
 
-in repl
+start emacs and in lisp repl
 #+begin_src lisp
-  (ql:quickload :qlot)
+  ;; open lisp file in project first
+  ;; then start repl
   (uiop:getcwd) ; expect root of project
-  (qlot:init #P"/home/<user>/repos/teaspoon")
   ql:*quicklisp-home* ; local not /home/<user>/quicklisp
+  (ql:where-is-system 'mito) ; local not /home/<user>/quicklisp
+
+  (ql:quickload :qlot)
+  (qlot:init #P"/home/<user>/this-project")
+  qlot:*project-root*
+  (ql:where-is-system 'click) ; expect NIL
   (qlot:add 'mito)
+  (ql:where-is-system 'click) ; expect local
   (qlot:install)
-  (ql:where-is-system 'mito) ;local not /home/<user>/quicklisp
 
 #+end_src

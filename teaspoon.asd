@@ -10,13 +10,13 @@
                :listopia
                :clazy
                :cl-algebraic-data-type
-               :clj-coll
                :access
                :arrow-macros
                :lparallel
                :stmx
                :depot
                :mito
+               ;; :clj-coll
                )
   :serial t
   :components ((:file "teaspoon") ; a .lisp file
