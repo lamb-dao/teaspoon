@@ -1,0 +1,31 @@
+# teaspoon
+a little bit of typed immutability on top of CL as a treat. tsp, rhymes with lisp.
+
+* Modular, versioned
+Qlot
+* Immutable
+fset
+* Transducing
+cl-transducers
+* Functional
+listopia
+* Lazy
+clazy
+* Typed
+Serapeum, defstruct+
+satisfies, deftype,
+stylewarning/cl-algebraic-data-type
+* Explicit data types
+clj-coll
+serapeum dict
+* Uniform
+Access
+* Aggressive simplicity
+arrow-macros (<> ...)
+* Parallel by default
+Lparallel, mem managed
+* Transactional by default
+STMX
+shinmera/depot
+* Memoized by default
+Mito, sqlite, disk managed
