@@ -27,11 +27,7 @@
    :find-dir
    :on-start
    :on-project
-   :touch ; &&& add to docs
-   :move-file ; &&& add to docs
-   :*default-pathname-initialized*
-   :*default-pathname-project*
    ))
 
                                         ; enter package
-(in-package :click) ; Also enter this in the REPL!
+(in-package :teaspoon) ; Also enter this in the REPL!

@@ -29,3 +29,31 @@ STMX
 shinmera/depot
 * Memoized by default
 Mito, sqlite, disk managed
+* Setup
+** Qlot
+
+#+begin_src bash
+curl -L https://qlot.tech/installer | sh
+#add to path
+/home/<user>/.local/share/qlot/bin/qlot
+qlot # to test
+#+end_src
+
+add to dotfile
+#+begin_src lisp
+  (setq slime-lisp-implementations
+        '((qlot ("qlot" "exec" "sbcl") :coding-system utf-8-unix)
+          (sbcl ("sbcl") :coding-system utf-8-unix)))
+#+end_src
+
+in repl
+#+begin_src lisp
+  (ql:quickload :qlot)
+  (uiop:getcwd) ; expect root of project
+  (qlot:init #P"/home/<user>/repos/teaspoon")
+  ql:*quicklisp-home* ; local not /home/<user>/quicklisp
+  (qlot:add 'mito)
+  (qlot:install)
+  (ql:where-is-system 'mito) ;local not /home/<user>/quicklisp
+
+#+end_src
