@@ -1,34 +1,35 @@
 # teaspoon
 a little bit of typed immutability on top of CL as a treat. tsp, rhymes with lisp.
 
-* Modular, versioned
+* Modular, versioned repo based distribution
 Qlot
-* Immutable
-fset
-* Transducing
-cl-transducers
-* Functional
-listopia
-* Lazy
-clazy
 * Typed
-Serapeum, defstruct+
-satisfies, deftype,
-stylewarning/cl-algebraic-data-type
-* Explicit data types
-clj-coll
-serapeum dict
-* Uniform
-Access
-* Aggressive simplicity
+coalton-lang/coalton
+* Immutable functional
+slburson/fset/
+slburson/misc-extensions/
+* Transducing pipelines
+fosskers/cl-transducers
 arrow-macros (<> ...)
-* Parallel by default
-Lparallel, mem managed
-* Transactional by default
-STMX
+* Uniform
+access
+* Parallelized
+lparallel, mem managed
+* Memoized
+garlic0x1/memeozi
+&&&
+apply via hof macro that also hashes the function body
+all fun share a single lookup space
+make memory aware limitation
+cull by freq
+* Transactional memory and disk ops
+cosmos72/stmx
 shinmera/depot
-* Memoized by default
-Mito, sqlite, disk managed
+* Explicit data types
+() list
+#() vector
+{} set
+#{} dict
 * Setup
 ** Qlot
 
@@ -72,5 +73,8 @@ start emacs and in lisp repl
   (qlot:add 'mito)
   (ql:where-is-system 'click) ; expect local
   (qlot:install)
+
+  ;; if project.asd file has unsaved changes ie #.project.asd exists
+  ;; there are a number of bugs I should specify and report
 
 #+end_src
